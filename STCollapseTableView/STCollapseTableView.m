@@ -34,8 +34,8 @@
 
 @interface STCollapseTableView () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, assign) id<UITableViewDataSource> collapseDataSource;
-@property (nonatomic, assign) id<UITableViewDelegate> collapseDelegate;
+@property (nonatomic, weak) id<UITableViewDataSource> collapseDataSource;
+@property (nonatomic, weak) id<UITableViewDelegate> collapseDelegate;
 @property (nonatomic, strong) NSMutableArray* sectionsStates;
 
 @end
@@ -271,7 +271,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	int nbSection = [self.collapseDataSource numberOfSectionsInTableView:tableView];
+	NSInteger nbSection = [self.collapseDataSource numberOfSectionsInTableView:tableView];
     
 	while (nbSection < [self.sectionsStates count])
     {
